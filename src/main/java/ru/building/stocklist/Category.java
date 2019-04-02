@@ -1,6 +1,6 @@
 package ru.building.stocklist;
 
 public enum Category {
-    FOOD, PRINT, DRESS, GENERAL;
+    FOOD, PRINT, DRESS, GENERAL
 
 }

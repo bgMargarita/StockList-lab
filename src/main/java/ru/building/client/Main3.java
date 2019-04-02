@@ -30,6 +30,7 @@ public class Main3 {
         for (int i = 0; i < 100000; i++) itemCatalog.findItemByIDAL(10);
         end = new Date().getTime();
         System.out.println("In ArrayList: " + (end - begin));
+
         //4lab 3
         CatalogLoader loader = new CatalogStubLoader();
         loader.load(itemCatalog);

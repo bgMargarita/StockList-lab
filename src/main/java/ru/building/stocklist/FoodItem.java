@@ -24,7 +24,6 @@ public class FoodItem extends GenericItem {
     }
 
     public FoodItem(String name, float price, FoodItem analog, Date date, short expires) {
-        // setName(name);
         new FoodItem(name);
         setPrice(price);
         setDateOfIncome(date);

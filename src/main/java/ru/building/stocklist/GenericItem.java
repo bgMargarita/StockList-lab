@@ -61,7 +61,6 @@ public class GenericItem {
         setCategory(analog.category);
         setPrice(price);
         setId(GenericItem.getCurrentID() + 1);
-//         setId(GenericItem.currentID++);
 
     }
 
