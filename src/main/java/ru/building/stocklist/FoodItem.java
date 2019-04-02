@@ -3,6 +3,7 @@ package ru.building.stocklist;
 import java.util.Date;
 
 public class FoodItem extends GenericItem {
+
     private Date dateOfIncome;
 
     private short expires;

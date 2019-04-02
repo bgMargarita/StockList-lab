@@ -1,8 +1,8 @@
 package ru.building.stocklist;
 
 public class GenericItem {
-    private static int currentID;
 
+    private static int currentID;
     private int id;
     private String name;
     private float price;
