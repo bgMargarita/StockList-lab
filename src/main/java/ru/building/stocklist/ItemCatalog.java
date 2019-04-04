@@ -1,5 +1,7 @@
 package ru.building.stocklist;
 
+import ru.itmo.exceptions.ItemAlreadyExistsException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -9,9 +11,14 @@ public class ItemCatalog {
     private ArrayList<GenericItem> ALCatalog = new ArrayList<GenericItem>();
 
     // добавляет товар в каталог
-    public void addItem(GenericItem item) {
-        catalog.put(item.getId(), item); // Добавляем товар в HashMap
-        ALCatalog.add(item);    // Добавляем тот же товар в ArrayList
+    public void addItem(GenericItem item) throws ItemAlreadyExistsException {
+        try {
+            if (catalog.containsValue(item) || ALCatalog.contains(item)) throw new ItemAlreadyExistsException();
+            catalog.put(item.getId(), item); // Добавляем товар в HashMap
+            ALCatalog.add(item);        // Добавляем тот же товар в ArrayList
+        } catch (ItemAlreadyExistsException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void printItems() {
