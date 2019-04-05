@@ -2,6 +2,8 @@ package ru.building.stocklist;
 
 import ru.building.client.*;
 
+import java.util.Objects;
+
 public class TechnicalItem extends GenericItem {
 
     public short warrantyTime;
@@ -22,8 +24,14 @@ public class TechnicalItem extends GenericItem {
     }
 
     @Override
-    public boolean equals(GenericItem o) {
+    public boolean equals(Object o) {
+
         return (super.equals(o) && getWarrantyTime() == ((TechnicalItem) o).getWarrantyTime());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), warrantyTime);
     }
 
     @Override

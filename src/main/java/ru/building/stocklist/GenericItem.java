@@ -1,10 +1,15 @@
 package ru.building.stocklist;
 
+import ru.itmo.exceptions.CatalogLoadException;
+
+import java.util.Objects;
+
 public class GenericItem {
 
     private static int currentID;
     private int id;
     private String name;
+    private GenericItem analog = null;
     private float price;
     private Category category = Category.GENERAL;
 
@@ -48,20 +53,39 @@ public class GenericItem {
         this.price = price;
     }
 
+    public GenericItem getAnalog() {
+        return analog;
+    }
+
+    public void setAnalog(GenericItem analog) {
+        this.analog = analog;
+    }
+
     public GenericItem(String name, float price, Category category) {//3 lab
-        setName(name);
-        setCategory(category);
-        setPrice(price);
-        setId(GenericItem.getCurrentID() + 1);
+
+        this.name = name;
+        this.price = price;
+        this.category = category;
+        this.id = GenericItem.currentID++;
     }
 
 
     GenericItem(String name, float price, GenericItem analog) {//3lab
-        setName(name);
-        setCategory(analog.category);
-        setPrice(price);
-        setId(GenericItem.getCurrentID() + 1);
 
+        this.name = name;
+        this.price = price;
+        this.category = analog.category;
+        this.analog = analog;
+        this.id = GenericItem.currentID++;
+
+    }
+
+    public GenericItem(String name, float price, Category category, GenericItem analog) {
+        this.name = name;
+        this.price = price;
+        this.category = category;
+        this.analog = analog;
+        this.id = GenericItem.currentID++;
     }
 
     GenericItem() {
@@ -73,8 +97,21 @@ public class GenericItem {
 
     }
 
-    boolean equals(GenericItem o) {
-        return (getPrice() == o.getPrice() && getId() == o.getId() && getName().equals(o.getName()) && getCategory().equals(o.getCategory()));
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+        GenericItem o = (GenericItem) object;
+        return (this.name.equals(o.name) && this.category.equals(o.category) && this.price == o.price && this.id == o.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, price, category);
     }
 
     @Override
@@ -92,4 +129,5 @@ public class GenericItem {
     public String toString() {
         return ("is : " + id + " price " + price + " category: " + category.name() + "name  : " + name);
     }
+
 }

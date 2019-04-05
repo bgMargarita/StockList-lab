@@ -1,6 +1,8 @@
 package ru.building.client;
 
 import ru.building.stocklist.*;
+import ru.itmo.exceptions.CatalogLoadException;
+import ru.itmo.exceptions.ItemAlreadyExistsException;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -12,15 +14,26 @@ public class Main3 {
         String line = "Конфеты’Маска’;45;120";
         String[] item_fld = line.split(";");
         System.out.println(Arrays.toString(item_fld));
-        // FoodItem foodItem = new FoodItem(item_fld); не получилось
+        FoodItem foodItem = new FoodItem(item_fld.toString());
 
         //4 lab
         ItemCatalog itemCatalog = new ItemCatalog();
         GenericItem genericItem = new GenericItem("name", 10, Category.GENERAL);
         GenericItem genericItem2 = new GenericItem("name2", 10, Category.GENERAL);
 
-        itemCatalog.addItem(genericItem);
-        itemCatalog.addItem(genericItem2);
+        try {
+            itemCatalog.addItem(genericItem);
+        } catch (ItemAlreadyExistsException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        try {
+            itemCatalog.addItem(genericItem2);
+        } catch (ItemAlreadyExistsException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+
+        }
 
         long begin = new Date().getTime();
         for (int i = 0; i < 100000; i++) itemCatalog.findItemByID(10);
@@ -33,7 +46,12 @@ public class Main3 {
 
         //4lab 3
         CatalogLoader loader = new CatalogStubLoader();
-        loader.load(itemCatalog);
+        try {
+            loader.load(itemCatalog);
+        } catch (CatalogLoadException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
 
     }
 }

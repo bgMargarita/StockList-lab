@@ -1,6 +1,7 @@
 package ru.building.stocklist;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class FoodItem extends GenericItem {
 
@@ -25,19 +26,20 @@ public class FoodItem extends GenericItem {
     }
 
     public FoodItem(String name, float price, FoodItem analog, Date date, short expires) {
-        new FoodItem(name);
-        setPrice(price);
-        setDateOfIncome(date);
-        setExpires(expires);
-        this.setCategory(analog.getCategory());
+        this.setName(name);
+        this.setPrice(price);
+        this.setAnalog(analog);
+        this.dateOfIncome = date;
+        this.expires = expires;
     }
 
     public FoodItem(String name) {
-        setName(name);
+        this(name, 100f, null, null, (short) 12);
+
     }
 
     public FoodItem(String name, float price, short expires) {
-        this(name, price, new FoodItem(name), new Date(123456789), expires);
+        this(name, price, null, null, expires);
     }
 
     @Override
@@ -48,8 +50,14 @@ public class FoodItem extends GenericItem {
     }
 
     @Override
-    public boolean equals(GenericItem o) {
+    public boolean equals(Object o) {
+
         return (super.equals(o) && dateOfIncome.equals(((FoodItem) o).dateOfIncome) && expires == ((FoodItem) o).expires);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), dateOfIncome, expires);
     }
 
     @Override
