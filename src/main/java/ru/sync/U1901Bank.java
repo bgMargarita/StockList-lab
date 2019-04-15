@@ -5,9 +5,10 @@ public class U1901Bank {
     private int intFrom = 220;
 
     public void calc(int intTransaction, long lngTimeout) {
-        System.out.println("Before");
-        System.out.println("intTransition = " + intTransaction + " lngTimeout = " + lngTimeout);
+        System.out.print("Before ");
         System.out.println(Thread.currentThread().getName());
+
+        System.out.println("intTo = " + intTo + " intFrom = " + intFrom);
         intFrom = intFrom - intTransaction;
         try {
             Thread.sleep(lngTimeout);
@@ -16,9 +17,10 @@ public class U1901Bank {
             e.printStackTrace();
         }
         intTo = intTo + intTransaction;
+        System.out.print("After ");
         System.out.println(Thread.currentThread().getName());
-        System.out.println("After");
-        System.out.println("intTransition = " + intTransaction + " lngTimeout = " + lngTimeout);
+        System.out.println("intTo = " + intTo + " intFrom = " + intFrom);
+
     }
 
 }
