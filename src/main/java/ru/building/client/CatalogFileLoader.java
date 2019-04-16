@@ -36,14 +36,10 @@ public class CatalogFileLoader implements CatalogLoader {
                 FoodItem item = new FoodItem(name, price, null, new Date(), expires);
                 cat.addItem(item);
             }
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException | ItemAlreadyExistsException e) {
             e.printStackTrace();
+            System.out.println(e.getMessage());
             throw new CatalogLoadException(e);
-        } catch (ItemAlreadyExistsException e) {
-            e.printStackTrace();
-            throw new CatalogLoadException(e);
-
         }
     }
-}
 }

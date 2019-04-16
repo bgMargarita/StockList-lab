@@ -5,22 +5,20 @@ public class U1901Bank {
     private int intFrom = 220;
 
     public void calc(int intTransaction, long lngTimeout) {
-        System.out.print("Before ");
-        System.out.println(Thread.currentThread().getName());
-
-        System.out.println("intTo = " + intTo + " intFrom = " + intFrom);
+        synchronized (this) {
+            System.out.println("Before  " + Thread.currentThread().getName() + "intTo = " + intTo + " intFrom = " + intFrom);
         intFrom = intFrom - intTransaction;
+
         try {
             Thread.sleep(lngTimeout);
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
-        intTo = intTo + intTransaction;
-        System.out.print("After ");
-        System.out.println(Thread.currentThread().getName());
-        System.out.println("intTo = " + intTo + " intFrom = " + intFrom);
 
+            intTo = intTo + intTransaction;
+            System.out.println("After  " + Thread.currentThread().getName() + "intTo = " + intTo + " intFrom = " + intFrom);
+        }
     }
 
 }
