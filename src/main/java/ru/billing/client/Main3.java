@@ -14,7 +14,7 @@ public class Main3 {
         String line = "Конфеты’Маска’;45;120";
         String[] item_fld = line.split(";");
         System.out.println(Arrays.toString(item_fld));
-        FoodItem foodItem = new FoodItem(item_fld.toString());
+        FoodItem foodItem = new FoodItem(Arrays.toString(item_fld));
 
         //4 lab
         ItemCatalog itemCatalog = new ItemCatalog();

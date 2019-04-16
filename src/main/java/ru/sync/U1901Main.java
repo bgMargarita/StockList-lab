@@ -8,12 +8,14 @@ public class U1901Main {
         threadOne.setPriority(Thread.MAX_PRIORITY);
         threadOne.start();
 
+
         U1901Thread threadTwo = new U1901Thread(bankMain, 50, 300);
         threadTwo.setName(" not main thread ");
         threadTwo.setPriority(Thread.MAX_PRIORITY);
         threadTwo.start();
 
         System.out.println(Thread.currentThread().getName());
+
 
     }
 
