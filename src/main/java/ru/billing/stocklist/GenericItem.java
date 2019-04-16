@@ -1,6 +1,4 @@
-package ru.building.stocklist;
-
-import ru.itmo.exceptions.CatalogLoadException;
+package ru.billing.stocklist;
 
 import java.util.Objects;
 

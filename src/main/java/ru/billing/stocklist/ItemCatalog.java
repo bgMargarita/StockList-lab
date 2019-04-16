@@ -1,4 +1,4 @@
-package ru.building.stocklist;
+package ru.billing.stocklist;
 
 import ru.itmo.exceptions.ItemAlreadyExistsException;
 

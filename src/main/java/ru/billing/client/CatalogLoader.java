@@ -1,6 +1,6 @@
-package ru.building.client;
+package ru.billing.client;
 
-import ru.building.stocklist.*;
+import ru.billing.stocklist.*;
 import ru.itmo.exceptions.CatalogLoadException;
 
 public interface CatalogLoader {

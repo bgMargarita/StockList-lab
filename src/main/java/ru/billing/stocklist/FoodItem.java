@@ -1,4 +1,4 @@
-package ru.building.stocklist;
+package ru.billing.stocklist;
 
 import java.util.Date;
 import java.util.Objects;

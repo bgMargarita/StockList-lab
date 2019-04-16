@@ -1,7 +1,7 @@
-package ru.building.client;
+package ru.billing.client;
 
-import ru.building.stocklist.FoodItem;
-import ru.building.stocklist.ItemCatalog;
+import ru.billing.stocklist.FoodItem;
+import ru.billing.stocklist.ItemCatalog;
 import ru.itmo.exceptions.CatalogLoadException;
 import ru.itmo.exceptions.ItemAlreadyExistsException;
 

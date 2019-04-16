@@ -4,8 +4,8 @@ public class U1901Bank {
     private int intTo;
     private int intFrom = 220;
 
-    public void calc(int intTransaction, long lngTimeout) {
-        synchronized (this) {
+    public synchronized void calc(int intTransaction, long lngTimeout) {
+
             System.out.println("Before  " + Thread.currentThread().getName() + "intTo = " + intTo + " intFrom = " + intFrom);
         intFrom = intFrom - intTransaction;
 
@@ -15,10 +15,9 @@ public class U1901Bank {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
-
             intTo = intTo + intTransaction;
             System.out.println("After  " + Thread.currentThread().getName() + "intTo = " + intTo + " intFrom = " + intFrom);
-        }
+
     }
 
 }

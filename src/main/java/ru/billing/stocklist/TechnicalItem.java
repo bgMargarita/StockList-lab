@@ -1,6 +1,4 @@
-package ru.building.stocklist;
-
-import ru.building.client.*;
+package ru.billing.stocklist;
 
 import java.util.Objects;
 
